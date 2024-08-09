@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import IcSearch from '../assets/icon/ic_search.svg';
 
 const SearchBox = () => {
     return (
@@ -9,7 +10,7 @@ const SearchBox = () => {
                 placeholder="장소를 입력하세요."
             />
             <TouchableOpacity style = {styles.searchButton}>
-                {/* //검색 */}
+                <IcSearch width={24} height={24} />
             </TouchableOpacity>
             <TouchableOpacity style = {styles.menuButton}>
                 {/* //햄버거 */}

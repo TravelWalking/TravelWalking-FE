@@ -4,17 +4,17 @@ import { Image, StyleSheet, View } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import MypageScreen from '../screens/MypageScreen';
-import CustomHeader from '../components/SearchBox';
+import SearchBox from '../components/SearchBox';
 
 const Tab = createBottomTabNavigator();
 
 const assets = {
-  home: require('../assets/icon/home.png'),
-  homeC: require('../assets/icon/home2.png'),
-  community: require('../assets/icon/community.png'),
-  communityC: require('../assets/icon/community2.png'),
-  mypage: require('../assets/icon/mypage.png'),
-  mypageC: require('../assets/icon/mypage2.png'),
+  home: '../assets/icon/home.png',
+  homeC: '../assets/icon/home2.png',
+  community: '../assets/icon/community.png',
+  communityC: '../assets/icon/community2.png',
+  mypage: '../assets/icon/mypage.png',
+  mypageC: '../assets/icon/mypage2.png',
 };
 
 const getTabBarIcon = (routeName: string, focused: boolean) => {
@@ -56,7 +56,7 @@ function BottomTabNavigator() {
           name="산책 기록" 
           component={HomeScreen}
           options={{
-            header: () => <CustomHeader/>,
+            header: () => <SearchBox/>,
           }} 
         />
         <Tab.Screen name="커뮤니티" component={CommunityScreen} />
