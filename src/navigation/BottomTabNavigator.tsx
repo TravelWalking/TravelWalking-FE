@@ -4,16 +4,17 @@ import { Image, StyleSheet, View } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import MypageScreen from '../screens/MypageScreen';
+import CustomHeader from '../components/SearchBox';
 
 const Tab = createBottomTabNavigator();
 
 const assets = {
-  home: require('../assets/images/home.png'),
-  homeC: require('../assets/images/home2.png'),
-  community: require('../assets/images/community.png'),
-  communityC: require('../assets/images/community2.png'),
-  mypage: require('../assets/images/mypage.png'),
-  mypageC: require('../assets/images/mypage2.png'),
+  home: require('../assets/icon/home.png'),
+  homeC: require('../assets/icon/home2.png'),
+  community: require('../assets/icon/community.png'),
+  communityC: require('../assets/icon/community2.png'),
+  mypage: require('../assets/icon/mypage.png'),
+  mypageC: require('../assets/icon/mypage2.png'),
 };
 
 const getTabBarIcon = (routeName: string, focused: boolean) => {
@@ -51,7 +52,13 @@ function BottomTabNavigator() {
           },
         })}
       >
-        <Tab.Screen name="산책 기록" component={HomeScreen} />
+        <Tab.Screen 
+          name="산책 기록" 
+          component={HomeScreen}
+          options={{
+            header: () => <CustomHeader/>,
+          }} 
+        />
         <Tab.Screen name="커뮤니티" component={CommunityScreen} />
         <Tab.Screen name="마이페이지" component={MypageScreen} />
       </Tab.Navigator>
