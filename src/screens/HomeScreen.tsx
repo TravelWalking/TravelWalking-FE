@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import MyComponent from '../components/MainComponent';
 import Dropdown from '../components/Dropdown';
 
 const HomeScreen = () => {
@@ -8,10 +7,9 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Dropdown selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
-      <Text style={styles.title}>Welcome to the Home Screen</Text>
-      <MyComponent />
-
+      <View style={styles.dropdownContainer}>
+        <Dropdown selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+      </View>
       {/* 선택된 옵션에 따라 다른 컴포넌트 렌더링 */}
       {selectedOption === '지도로 보기' && <MapView />}
       {selectedOption === '피드로 보기' && <FeedView />}
@@ -41,6 +39,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+  },
+  dropdownContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   title: {
     fontSize: 24,

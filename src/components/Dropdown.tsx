@@ -55,13 +55,13 @@ const Dropdown = ({ selectedOption, setSelectedOption }) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'flex-start',
-        margin: 20,
+        marginLeft: 10,
         zIndex: 1,
     },
     button: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 10,
+        padding: 5,
         borderWidth: 1,
         borderColor: '#ccc',
         backgroundColor: '#f0f0f0',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         marginRight: 10,
-        fontSize: 16,
+        fontSize: 10,
         color: '#333',
     },
     arrow: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     dropdown: {
         position: 'absolute',
-        top: 42,
+        top: 28,
         left: 0,
         right: 0,
         borderWidth: 1,
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
         zIndex: 2,
     },
     dropdownOption: {
-        padding: 10,
+        padding: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
     },
     optionText: {
-        fontSize: 16,
+        fontSize: 10,
         color: '#333',
     },
 });
