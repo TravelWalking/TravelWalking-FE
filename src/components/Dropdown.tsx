@@ -1,0 +1,110 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import UpArrow from '../assets/icon/ic_Up.svg';
+import DownArrow from '../assets/icon/ic_Down.svg';
+
+const Dropdown = ({ selectedOption, setSelectedOption }) => {
+    const [isDropdownVisible, setDropdownVisible] = React.useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!isDropdownVisible);
+    };
+
+    const selectOption = (option) => {
+        setSelectedOption(option);
+        setDropdownVisible(false);
+    };
+
+    const getDropdownOptions = () => {
+        if (selectedOption === '지도로 보기') {
+            return (
+                <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('피드로 보기')}>
+                    <Text style={styles.optionText}>피드로 보기</Text>
+                </TouchableOpacity>
+            );
+        } else {
+            return (
+                <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('지도로 보기')}>
+                    <Text style={styles.optionText}>지도로 보기</Text>
+                </TouchableOpacity>
+            );
+        }
+    };
+
+    return (
+        <View style={styles.container}>
+            <TouchableOpacity
+                style={[
+                    styles.button,
+                    isDropdownVisible ? styles.buttonActive : styles.buttonInactive
+                ]}
+                onPress={toggleDropdown}
+            >
+                <Text style={styles.buttonText}>{selectedOption}</Text>
+                <Text style={styles.arrow}>{isDropdownVisible ? <UpArrow width={16} height={16} /> : <DownArrow width={16} height={16} /> }</Text>
+            </TouchableOpacity>
+            {isDropdownVisible && (
+                <View style={styles.dropdown}>
+                    {getDropdownOptions()}
+                </View>
+            )}
+        </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'flex-start',
+        margin: 20,
+        zIndex: 1,
+    },
+    button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        backgroundColor: '#f0f0f0',
+    },
+    buttonActive: {
+        borderBottomLeftRadius: 0,  
+        borderBottomRightRadius: 0, 
+        borderTopLeftRadius: 10,    
+        borderTopRightRadius: 10,   
+    },
+    buttonInactive: {
+        borderRadius: 10, 
+    },
+    buttonText: {
+        marginRight: 10,
+        fontSize: 16,
+        color: '#333',
+    },
+    arrow: {
+        fontSize: 14,
+        color: '#333',
+    },
+    dropdown: {
+        position: 'absolute',
+        top: 42,
+        left: 0,
+        right: 0,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderBottomLeftRadius: 10,  // 드롭다운 하단 모서리 둥글게
+        borderBottomRightRadius: 10, // 드롭다운 하단 모서리 둥글게
+        backgroundColor: '#fff',
+        zIndex: 2,
+    },
+    dropdownOption: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+    optionText: {
+        fontSize: 16,
+        color: '#333',
+    },
+});
+
+export default Dropdown;

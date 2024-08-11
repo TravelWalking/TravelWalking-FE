@@ -9,12 +9,12 @@ import SearchBox from '../components/SearchBox';
 const Tab = createBottomTabNavigator();
 
 const assets = {
-  home: '../assets/icon/home.png',
-  homeC: '../assets/icon/home2.png',
-  community: '../assets/icon/community.png',
-  communityC: '../assets/icon/community2.png',
-  mypage: '../assets/icon/mypage.png',
-  mypageC: '../assets/icon/mypage2.png',
+  home: require('../assets/icon/home.png'),
+  homeC: require('../assets/icon/home2.png'),
+  community: require('../assets/icon/community.png'),
+  communityC: require('../assets/icon/community2.png'),
+  mypage: require('../assets/icon/mypage.png'),
+  mypageC: require('../assets/icon/mypage2.png'),
 };
 
 const getTabBarIcon = (routeName: string, focused: boolean) => {

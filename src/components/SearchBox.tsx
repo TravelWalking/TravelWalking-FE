@@ -1,23 +1,25 @@
 import React from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import IcSearch from '../assets/icon/ic_search.svg';
+import IcHambuger from '../assets/icon/ic_hamburger.svg';
 
 const SearchBox = () => {
     return (
-        <View style = {styles.container}>
-            <TextInput
-                style = {styles.input}
-                placeholder="장소를 입력하세요."
-            />
-            <TouchableOpacity style = {styles.searchButton}>
-                <IcSearch width={24} height={24} />
+        <View style={styles.container}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="장소를 입력하세요."
+                />
+                <TouchableOpacity style={styles.searchButton}>
+                    <IcSearch width={24} height={24} />
+                </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.menuButton}>
+                <IcHambuger width={30} height={30}/>
             </TouchableOpacity>
-            <TouchableOpacity style = {styles.menuButton}>
-                {/* //햄버거 */}
-            </TouchableOpacity>
-
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -27,21 +29,25 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#fff',
     },
+    inputContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 5,
+    },
     input: {
         flex: 1,
         height: 40,
-        borderColor: '#ccc', 
-        borderWidth: 1,
-        borderRadius: 5,
         paddingHorizontal: 10,
     },
     searchButton: {
-        marginLeft: 10,
+        padding: 10,
     },
     menuButton: {
         marginLeft: 10,
     },
-
 });
 
 export default SearchBox;
