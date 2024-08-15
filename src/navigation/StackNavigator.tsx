@@ -1,17 +1,22 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
+import BottomTabNavigator from './BottomTabNavigator';
 
-const HomeStack = createStackNavigator();
+export type StackParamList = {
+    Main: undefined;
+    Search: undefined;
+  };
+  
+const Stack = createStackNavigator<StackParamList>();
 
-const HomeStackNavigator = () => {
+const StackNavigator = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Search" component={SearchScreen} />
-    </HomeStack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Main" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Search" component={SearchScreen} />
+    </Stack.Navigator>
   );
 };
 
-export default HomeStackNavigator;
+export default StackNavigator;

@@ -8,11 +8,9 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* MapView 또는 FeedView를 먼저 렌더링 */}
       {selectedOption === '지도로 보기' && <MapView />}
       {selectedOption === '피드로 보기' && <FeedView />}
       
-      {/* 드롭다운 헤더 */}
       <View style={styles.dropdownContainer}>
         <Dropdown selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
       </View>

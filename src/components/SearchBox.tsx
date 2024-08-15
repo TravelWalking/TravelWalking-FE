@@ -2,8 +2,16 @@ import React from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import IcSearch from '../assets/icon/ic_search.svg';
 import IcHambuger from '../assets/icon/ic_hamburger.svg';
+import useNavigator from '../hooks/useNavigator';
 
 const SearchBox = () => {
+
+    const { stackNavigation } = useNavigator();
+
+    const handleSearchPress = () => {
+        stackNavigation.navigate('Search');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.inputContainer}>
@@ -11,7 +19,7 @@ const SearchBox = () => {
                     style={styles.input}
                     placeholder="장소를 입력하세요."
                 />
-                <TouchableOpacity style={styles.searchButton}>
+                <TouchableOpacity style={styles.searchButton} onPress={handleSearchPress}>
                     <IcSearch width={24} height={24} />
                 </TouchableOpacity>
             </View>

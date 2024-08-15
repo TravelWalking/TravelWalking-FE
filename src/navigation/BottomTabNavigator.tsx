@@ -10,20 +10,26 @@ import HomeIcon from '../assets/icon/ic_home.svg';
 import CommunityIcon from '../assets/icon/ic_community.svg';
 import MypageIcon from '../assets/icon/ic_mypage.svg';
 
-const Tab = createBottomTabNavigator();
+export type TabParamList = {
+  Home: undefined;
+  Community: undefined;
+  Mypage: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 const getTabBarIcon = (routeName: string, focused: boolean) => {
   let IconComponent;
   let color = focused ? '#2B2972' : '#939393';
 
   switch (routeName) {
-    case '산책 기록':
+    case 'Home':
       IconComponent = HomeIcon;
       break;
-    case '커뮤니티':
+    case 'Community':
       IconComponent = CommunityIcon;
       break;
-    case '마이페이지':
+    case 'Mypage':
       IconComponent = MypageIcon;
       break;
     default:
@@ -51,14 +57,14 @@ function BottomTabNavigator() {
         })}
       >
         <Tab.Screen 
-          name="산책 기록" 
+          name="Home" 
           component={HomeScreen}
           options={{
             header: () => <SearchBox />,
           }} 
         />
-        <Tab.Screen name="커뮤니티" component={CommunityScreen} />
-        <Tab.Screen name="마이페이지" component={MypageScreen} />
+        <Tab.Screen name="Community" component={CommunityScreen} />
+        <Tab.Screen name="Mypage" component={MypageScreen} />
       </Tab.Navigator>
     </View>
   );
