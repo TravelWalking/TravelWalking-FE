@@ -60,13 +60,11 @@ function MypageScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7f7f7',
+    backgroundColor: '#ffffff',
   },
   header: {
     padding: 20,
-    backgroundColor: '#fff',
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    backgroundColor: '#fffff',
     marginBottom: 10,
   },
   headerSubtitle: {
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   pointButtonText: {
-    fontSize: 12.5,
+    fontSize: 13,
     color: '#FFFFFF',
     fontWeight: 'bold',
   },
@@ -115,24 +113,26 @@ const styles = StyleSheet.create({
   // 구분선 스타일 추가
   separator: {
     height: 1,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#fff',
+    borderColor: '#CBCBCB',
+    borderWidth: 0.9,
     marginHorizontal: 20,
     marginBottom: 25,
     marginVertical: 15,  // 구분선 위아래로 15px 공백 추가
   },
 
   box: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
+    backgroundColor: '#F5F6F8',
+    borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: '#DEDEDE',
     marginHorizontal: 20,
   },
   listBox: {
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: '#eeeeee',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -147,17 +147,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   spacing: {
-    height: 15, // Box 사이 간격
+    height: 20, // Box 사이 간격
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 16.5,
     fontWeight: 'bold',
     color: '#000',
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 15,
+    fontWeight: 'bold',
     color: '#000',
   },
   arrow: {
