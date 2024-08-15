@@ -1,55 +1,58 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import UpArrow from '../assets/icon/ic_Up.svg';
-import DownArrow from '../assets/icon/ic_Down.svg';
 
-const Dropdown = ({ selectedOption, setSelectedOption }) => {
-    const [isDropdownVisible, setDropdownVisible] = React.useState(false);
+type DropdownProps = {
+  selectedOption: string;
+  setSelectedOption: (option: string) => void;
+};
 
-    const toggleDropdown = () => {
-        setDropdownVisible(!isDropdownVisible);
-    };
+const Dropdown: React.FC<DropdownProps> = ({ selectedOption, setSelectedOption }) => {
+  const [isDropdownVisible, setDropdownVisible] = React.useState<boolean>(false);
 
-    const selectOption = (option) => {
-        setSelectedOption(option);
-        setDropdownVisible(false);
-    };
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
+  };
 
-    const getDropdownOptions = () => {
-        if (selectedOption === '지도로 보기') {
-            return (
-                <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('피드로 보기')}>
-                    <Text style={styles.optionText}>피드로 보기</Text>
-                </TouchableOpacity>
-            );
-        } else {
-            return (
-                <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('지도로 보기')}>
-                    <Text style={styles.optionText}>지도로 보기</Text>
-                </TouchableOpacity>
-            );
-        }
-    };
+  const selectOption = (option: string) => {
+    setSelectedOption(option);
+    setDropdownVisible(false);
+  };
 
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity
-                style={[
-                    styles.button,
-                    isDropdownVisible ? styles.buttonActive : styles.buttonInactive
-                ]}
-                onPress={toggleDropdown}
-            >
-                <Text style={styles.buttonText}>{selectedOption}</Text>
-                <Text style={styles.arrow}>{isDropdownVisible ? <UpArrow width={16} height={16} /> : <DownArrow width={16} height={16} /> }</Text>
-            </TouchableOpacity>
-            {isDropdownVisible && (
-                <View style={styles.dropdown}>
-                    {getDropdownOptions()}
-                </View>
-            )}
+  const getDropdownOptions = () => {
+    if (selectedOption === '지도로 보기') {
+      return (
+        <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('피드로 보기')}>
+          <Text style={styles.optionText}>피드로 보기</Text>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity style={styles.dropdownOption} onPress={() => selectOption('지도로 보기')}>
+          <Text style={styles.optionText}>지도로 보기</Text>
+        </TouchableOpacity>
+      );
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={[
+          styles.button,
+          isDropdownVisible ? styles.buttonActive : styles.buttonInactive
+        ]}
+        onPress={toggleDropdown}
+      >
+        <Text style={styles.buttonText}>{selectedOption}</Text>
+        <Text style={styles.arrow}>{isDropdownVisible ? '▲' : '▼'}</Text>
+      </TouchableOpacity>
+      {isDropdownVisible && (
+        <View style={styles.dropdown}>
+          {getDropdownOptions()}
         </View>
-    );
+      )}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
