@@ -5,12 +5,6 @@ function MypageScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        {/*<View style={styles.headerTop}>
-          <Text style={styles.headerTitle}>마이페이지</Text>
-          <View style={styles.pointsContainer}>
-            <Text style={styles.pointsText}>50P</Text>
-          </View>
-        </View>*/}
         <Text style={styles.headerSubtitle}>00 님</Text>
         <View style={styles.tagContainer}>
           <Text style={styles.tag}>#맛집 주변</Text>
@@ -25,27 +19,36 @@ function MypageScreen() {
         <Text style={styles.pointButtonText}>포인트 활용 방법 알아보기</Text>
       </TouchableOpacity>
 
-      <View style={styles.card}>
-        <View style={styles.group}>
-          <Text style={styles.sectionTitle}>Feed</Text>
-          <TouchableOpacity style={styles.listButton}>
-            <Text style={styles.buttonText}>내 스크랩 목록</Text>
-            <Text style={styles.arrow}>{'>'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.listButton}>
-            <Text style={styles.buttonText}>내가 작성한 게시글</Text>
-            <Text style={styles.arrow}>{'>'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.listButton}>
-            <Text style={styles.buttonText}>내가 작성한 댓글</Text>
-            <Text style={styles.arrow}>{'>'}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.listButton}>
-            <Text style={styles.buttonText}>나의 친구 현황</Text>
-            <Text style={styles.arrow}>{'>'}</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={[styles.listButton, styles.withdrawButton]}>
+      {/* 구분선 추가 */}
+      <View style={styles.separator} />
+
+      {/* 첫번째 박스: Feed */}
+      <View style={styles.box}>
+        <Text style={styles.sectionTitle}>Feed</Text>
+        <TouchableOpacity style={[styles.listBox, styles.firstListBox]}>
+          <Text style={styles.buttonText}>내 스크랩 목록</Text>
+          <Text style={styles.arrow}>{'>'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.listBox}>
+          <Text style={styles.buttonText}>내가 작성한 게시글</Text>
+          <Text style={styles.arrow}>{'>'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.listBox}>
+          <Text style={styles.buttonText}>내가 작성한 댓글</Text>
+          <Text style={styles.arrow}>{'>'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.listBox, styles.lastListBox]}>
+          <Text style={styles.buttonText}>나의 친구 현황</Text>
+          <Text style={styles.arrow}>{'>'}</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Box 간격 */}
+      <View style={styles.spacing} />
+
+      {/* 두번째 박스: 서비스 탈퇴하기 */}
+      <View style={styles.box}>
+        <TouchableOpacity style={[styles.listBox, styles.lastListBox]}>
           <Text style={styles.buttonText}>서비스 탈퇴하기</Text>
           <Text style={styles.arrow}>{'>'}</Text>
         </TouchableOpacity>
@@ -66,28 +69,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     marginBottom: 10,
   },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  headerTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  pointsContainer: {
-    backgroundColor: '#e6e6ff',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 20,
-  },
-  pointsText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#6a5acd',
-  },
   headerSubtitle: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -96,7 +77,7 @@ const styles = StyleSheet.create({
   },
   tagContainer: {
     flexDirection: 'row',
-    marginBottom: 10
+    marginBottom: 10,
   },
   tag: {
     backgroundColor: '#9391E5',
@@ -128,36 +109,52 @@ const styles = StyleSheet.create({
   pointButtonText: {
     fontSize: 12.5,
     color: '#FFFFFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
-  card: {
-    backgroundColor: '#F5F6F8',
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+
+  // 구분선 스타일 추가
+  separator: {
+    height: 1,
+    backgroundColor: '#e0e0e0',
     marginHorizontal: 20,
-    elevation: 1,
+    marginBottom: 25,
+    marginVertical: 15,  // 구분선 위아래로 15px 공백 추가
   },
-  group: {
-    marginBottom: 0,
+
+  box: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    marginHorizontal: 20,
+  },
+  listBox: {
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  firstListBox: {
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
+  lastListBox: {
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    borderBottomWidth: 0,
+  },
+  spacing: {
+    height: 15, // Box 사이 간격
   },
   sectionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#000',
     paddingVertical: 10,
-  },
-  listButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#f9f9f9',
-    paddingVertical: 15,
     paddingHorizontal: 20,
-    marginBottom: 10,
-    borderRadius: 8,
-    borderColor: '#e0e0e0',
-    borderWidth: 1,
   },
   buttonText: {
     fontSize: 16,
@@ -166,11 +163,6 @@ const styles = StyleSheet.create({
   arrow: {
     fontSize: 18,
     color: '#888',
-  },
-  withdrawButton: {
-    backgroundColor: '#fff6f6',
-    borderColor: '#ffd6d6',
-    marginTop: 20,
   },
 });
 
