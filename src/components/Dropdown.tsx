@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     button: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 5,
+        padding: 3,
         borderWidth: 1,
         borderColor: '#ccc',
         backgroundColor: '#f0f0f0',
@@ -84,23 +84,23 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     arrow: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#333',
     },
     dropdown: {
         position: 'absolute',
-        top: 28,
+        top: 24,
         left: 0,
         right: 0,
         borderWidth: 1,
         borderColor: '#ccc',
-        borderBottomLeftRadius: 10,  // 드롭다운 하단 모서리 둥글게
-        borderBottomRightRadius: 10, // 드롭다운 하단 모서리 둥글게
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
         backgroundColor: '#fff',
         zIndex: 2,
     },
     dropdownOption: {
-        padding: 5,
+        padding: 3,
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
     },

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   feedView: {
     flex: 1,
     backgroundColor: '#fae888',
-    marginTop: 40,
+    marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -100,17 +100,17 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   subRegionWrapper: {
-    height: 40,
+    height: 35,
     marginVertical: 5,
   },
   subRegionContainer: {
     flexDirection: 'row',
-    paddingVertical: 5,
+    paddingVertical: 4,
     paddingHorizontal: 3,
   },
   subRegionButton: {
     paddingVertical: 5,
-    paddingHorizontal: 15,
+    paddingHorizontal: 13,
     borderRadius: 20,
     backgroundColor: '#f8f8f8',
     marginHorizontal: 3,
