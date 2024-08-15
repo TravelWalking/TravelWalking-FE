@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import Dropdown from '../components/Dropdown';
+import FeedView from './FeedView';
 
 const HomeScreen = () => {
   const [selectedOption, setSelectedOption] = useState('지도로 보기');
@@ -25,15 +26,7 @@ const HomeScreen = () => {
 const MapView = () => {
   return (
     <View style={styles.mapView}>
-      <Text>여기에 지도 화면이 표시됩니다.</Text>
-    </View>
-  );
-};
-
-const FeedView = () => {
-  return (
-    <View style={styles.feedView}>
-      <Text>여기에 피드 화면이 표시됩니다.</Text>
+      <Text>지도 화면</Text>
     </View>
   );
 };
