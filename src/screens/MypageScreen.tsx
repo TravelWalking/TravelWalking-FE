@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Modal, Pressable } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Pressable, Image } from 'react-native';
 
 function MypageScreen() {
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
@@ -33,6 +33,14 @@ function MypageScreen() {
           <Text style={styles.tag}>#건대입구</Text>
         </View>
         <Text style={styles.statusMessage}>건대 근처에서 주로 산책을 즐겨요 :)</Text>
+
+        {/* 오른쪽 상단에 편집 버튼과 이미지 추가 */}
+        <View style={styles.rightHeaderContainer}>
+          <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editButtonText}>편집</Text>
+          </TouchableOpacity>
+          <Image source={require('../assets/images/Mypage/totalPoint.png')} style={styles.totalPointImage} />
+        </View>
       </View>
 
       <TouchableOpacity style={styles.pointButton}>
@@ -138,6 +146,38 @@ const styles = StyleSheet.create({
     color: '#000',
     marginBottom: 10,
   },
+  rightHeaderContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  
+  editButton: {
+    marginRight: 25, // 이미지와 버튼 간격
+    marginTop: -35,   // 버튼을 위로 이동 (값을 원하는 대로 조정)
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#DEDEDE',
+    backgroundColor: '#F5F6F8',
+  },
+  
+  editButtonText: {
+    fontSize: 12,
+    color: '#000000',
+    margin: 1.2,
+  },
+  
+  totalPointImage: {
+    width: 75,  // 이미지 너비
+    height: 75, // 이미지 높이
+    resizeMode: 'contain', // 이미지 크기 조정
+    marginRight: 10,
+  },
+  
   tagContainer: {
     flexDirection: 'row',
     marginBottom: 10,
