@@ -1,7 +1,27 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Pressable } from 'react-native';
 
 function MypageScreen() {
+  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [isCompleteModalVisible, setIsCompleteModalVisible] = useState(false);
+
+  const openConfirmModal = () => {
+    setIsConfirmModalVisible(true);
+  };
+
+  const closeConfirmModal = () => {
+    setIsConfirmModalVisible(false);
+  };
+
+  const openCompleteModal = () => {
+    setIsConfirmModalVisible(false);
+    setIsCompleteModalVisible(true);
+  };
+
+  const closeCompleteModal = () => {
+    setIsCompleteModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -48,11 +68,56 @@ function MypageScreen() {
 
       {/* 두번째 박스: 서비스 탈퇴하기 */}
       <View style={styles.box}>
-        <TouchableOpacity style={[styles.listBox, styles.lastListBox]}>
+        <TouchableOpacity style={[styles.listBox, styles.lastListBox]} onPress={openConfirmModal}>
           <Text style={styles.buttonText}>서비스 탈퇴하기</Text>
           <Text style={styles.arrow}>{'>'}</Text>
         </TouchableOpacity>
       </View>
+
+      {/* 탈퇴 확인 모달 */}
+      <Modal
+        transparent={true}
+        visible={isConfirmModalVisible}
+        animationType="none"
+        onRequestClose={closeConfirmModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Pressable style={styles.closeButton} onPress={closeConfirmModal}>
+              <Text style={styles.closeButtonText}>X</Text>
+            </Pressable>
+            <Text style={styles.modalTitle}> </Text>
+            <Text style={styles.modalTitle}> </Text>
+            <Text style={styles.modalTitle}>서비스 회원을</Text>
+            <Text style={styles.modalTitle}>탈퇴하시겠습니까?</Text>
+            <Text style={styles.modalTitle}> </Text>
+            <TouchableOpacity style={styles.confirmButton} onPress={openCompleteModal}>
+              <Text style={styles.confirmButtonText}>탈퇴할래요</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      {/* 탈퇴 완료 모달 */}
+      <Modal
+        transparent={true}
+        visible={isCompleteModalVisible}
+        animationType="none"
+        onRequestClose={closeCompleteModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Pressable style={styles.closeButton} onPress={closeCompleteModal}>
+              <Text style={styles.closeButtonText}>X</Text>
+            </Pressable>
+            <Text style={styles.modalSubtitle}> </Text>
+            <Text style={styles.modalSubtitle}>서비스 회원 탈퇴가 완료되었어요.</Text>
+            <Text style={styles.modalSubtitle}>사용자님과 곧 다시 만날 날을</Text>
+            <Text style={styles.modalSubtitle}>기다리고 있을게요 😢</Text>
+            <Text style={styles.modalSubtitle}> </Text>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -64,7 +129,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 20,
-    backgroundColor: '#fffff',
+    backgroundColor: '#ffffff', // 수정: 흰색 배경
     marginBottom: 10,
   },
   headerSubtitle: {
@@ -109,8 +174,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
   },
-
-  // 구분선 스타일 추가
   separator: {
     height: 1,
     backgroundColor: '#fff',
@@ -118,9 +181,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.9,
     marginHorizontal: 20,
     marginBottom: 25,
-    marginVertical: 15,  // 구분선 위아래로 15px 공백 추가
+    marginVertical: 15,
   },
-
   box: {
     backgroundColor: '#F5F6F8',
     borderRadius: 20,
@@ -147,7 +209,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   spacing: {
-    height: 20, // Box 사이 간격
+    height: 20,
   },
   sectionTitle: {
     fontSize: 16.5,
@@ -164,6 +226,55 @@ const styles = StyleSheet.create({
   arrow: {
     fontSize: 18,
     color: '#888',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // 반투명 배경
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
+    padding: 20,
+    width: '80%',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  },
+  closeButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  modalTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 1,
+  },
+  modalSubtitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 1,
+  },
+  confirmButton: {
+    backgroundColor: '#2B2972',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+    width: '100%',
+  },
+  confirmButtonText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: 'bold',
   },
 });
 
