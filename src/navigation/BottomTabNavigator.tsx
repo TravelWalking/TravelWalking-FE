@@ -1,40 +1,45 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import MypageScreen from '../screens/MypageScreen';
+import SearchBox from '../components/SearchBox';
 
-const Tab = createBottomTabNavigator();
+import HomeIcon from '../assets/icon/ic_home.svg';
+import CommunityIcon from '../assets/icon/ic_community.svg';
+import MypageIcon from '../assets/icon/ic_mypage.svg';
 
-const assets = {
-  home: require('../assets/images/home.png'),
-  homeC: require('../assets/images/home2.png'),
-  community: require('../assets/images/community.png'),
-  communityC: require('../assets/images/community2.png'),
-  mypage: require('../assets/images/mypage.png'),
-  mypageC: require('../assets/images/mypage2.png'),
+export type TabParamList = {
+  Home: undefined;
+  Community: undefined;
+  Mypage: undefined;
 };
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 const getTabBarIcon = (routeName: string, focused: boolean) => {
-  let iconSource;
+  let IconComponent;
+  let color = focused ? '#2B2972' : '#939393';
 
   switch (routeName) {
-    case '산책 기록':
-      iconSource = focused ? assets.home : assets.homeC;
+    case 'Home':
+      IconComponent = HomeIcon;
       break;
-    case '커뮤니티':
-      iconSource = focused ? assets.community : assets.communityC;
+    case 'Community':
+      IconComponent = CommunityIcon;
       break;
-    case '마이페이지':
-      iconSource = focused ? assets.mypage : assets.mypageC;
+    case 'Mypage':
+      IconComponent = MypageIcon;
       break;
     default:
-      iconSource = null;
+      IconComponent = null;
   }
 
-  return <Image source={iconSource} style={styles.icon} />;
+  return IconComponent ? <IconComponent width={26} height={26} color={color} /> : null;
 };
+
+
 
 function BottomTabNavigator() {
   return (
@@ -51,9 +56,15 @@ function BottomTabNavigator() {
           },
         })}
       >
-        <Tab.Screen name="산책 기록" component={HomeScreen} />
-        <Tab.Screen name="커뮤니티" component={CommunityScreen} />
-        <Tab.Screen name="마이페이지" component={MypageScreen} />
+        <Tab.Screen 
+          name="Home" 
+          component={HomeScreen}
+          options={{
+            header: () => <SearchBox />,
+          }} 
+        />
+        <Tab.Screen name="Community" component={CommunityScreen} />
+        <Tab.Screen name="Mypage" component={MypageScreen} />
       </Tab.Navigator>
     </View>
   );
